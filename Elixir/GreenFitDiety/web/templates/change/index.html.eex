@@ -1,0 +1,53 @@
+<div class="show_user">
+  <div class="col s12 m7">
+    <h2 class="header white-text">
+      Historia zmian użytkownika: <b> <%= @onuser.first_name %> <%= @onuser.last_name %> <b><%= @onuser.email %></b>
+      <%= link to: change_path(@conn, :new, @onuser), class: "btn yellow accent-1 right btn-add black-text" do %>
+        <i class="material-icons" style="font-size: 1.5rem;">add</i> Dodaj wpis
+      <% end %>
+    </h2>
+    <%= for change <- @changes do %>
+      <div class="card horizontal">
+        <div class="card-image grey lighten-3 center-align valign-wrapper" style="padding: 20px; min-width: 200px;">
+          <span style="font-size: 2.1rem; margin-left: auto; margin-right: auto;"><b><%= change.date %></b></span>
+        </div>
+        <div class="card-stacked grey lighten-4">
+          <div class="card-content">
+
+            <%= if change.weight != nil do %>
+              <p class="border-bottom">Waga <span class="right"><%= change.weight %></span></p>
+            <% end %>
+            <%= if change.metabolic_age != nil do %>
+              <p class="border-bottom">Wiek metaboliczny <span class="right"><%= change.metabolic_age %></span></p>
+            <% end %>
+            <%= if change.fat != nil do %>
+              <p class="border-bottom">Body Fat <span class="right"><%= change.fat %></span></p>
+            <% end %>
+            <%= if change.visceral_fat != nil do %>
+              <p class="border-bottom">Tłuszcz trzewny <span class="right"><%= change.visceral_fat %></span></p>
+            <% end %><br>
+            <%= if change.labs != nil do %>
+              <p class="show-element">Badania laboratoryjne
+                <textarea class="diet-description-show" readonly>
+                  <%= change.labs %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if change.others != nil do %>
+              <p class="show-element" style="top: -0px; position: relative;">Inne parametry
+                <textarea class="diet-description-show" readonly>
+                  <%= change.others %>
+                </textarea>
+              </p>
+            <% end %>
+          </div>
+          <div class="card-action grey lighten-4" style="text-align: right">
+            <%= link "Edytuj", to: change_path(@conn, :edit, @onuser, change), class: "btn yellow accent-1 black-text"  %>
+            <%= link "Usuń", to: change_path(@conn, :delete, @onuser, change), class: "btn red darken-1 white-text", method: :delete  %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div><br>

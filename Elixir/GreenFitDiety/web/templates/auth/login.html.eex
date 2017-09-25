@@ -1,0 +1,30 @@
+<center>
+  <h4>Zaloguj się za pośrednictwem facebook/google:</h4><br>
+
+  <%= link "zaloguj się przez facebook", to: auth_path(@conn, :request, "facebook"),
+             class: "loginBtn loginBtn--facebook" %>
+  <br><br>
+  <%= link "Zaloguj się przez google", to: auth_path(@conn, :request, "google"),
+           class: "loginBtn loginBtn--google" %>
+
+  <br><br><h4>lub przy użyciu adresu email:</h4>
+
+ <%= form_for @conn, auth_path(@conn, :login_with_password), [as: :login_pass], fn f -> %>
+
+    <%= if f.errors != [] do %>
+      <div class="alert alert-danger">
+       <p>Coś poszło nie tak:</p>
+      </div>
+    <% end %>
+
+      <%= email_input f, :email, placeholder: "email", class: "my-form input-bg", id: "login", type: "text" %>
+      <%= error_tag f, :email %>
+      <br>
+      <%= password_input f, :password, placeholder: "hasło", class: "my-form input-bg", id: "password", type: "password" %>
+      <%= error_tag f, :password %>
+      <br>
+      <button type="submit" class="btn btn-default input-bg">zaloguj</button>
+
+ <% end %>
+
+</center>

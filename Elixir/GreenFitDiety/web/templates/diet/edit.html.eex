@@ -1,0 +1,143 @@
+<div class="edit_user">
+  <div class="col s12 m7">
+    <%= form_for @changeset, diet_path(@conn, :update, @onuser, @diet), fn f -> %>
+    <h2 class="header white-text">
+      Edycja diety użytkownika: <b><%= @onuser.first_name %> <%= @onuser.last_name %> <%= @onuser.email %></b>
+    </h2>
+    <div class="card horizontal">
+
+        <div class="card-stacked grey lighten-4">
+            <div class="card-content">
+              <p class="border-bottom-edit">Nazwa diety:
+                <span class="right"><%= @diet.diet_name %></span>
+              </p>
+
+              <p class="edit">Posiłek 1 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m1_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m1_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 1 - godzina:
+                <span class="right">
+                  <%= text_input f, :m1_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m1_time %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Posiłek 1 - opis:
+                  <%= textarea f, :m1_description, class: "diet-description", rows: "2" %>
+                  <%= error_tag f, :m1_description %>
+              </p>
+
+              <p class="edit">Posiłek 2 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m2_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m2_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 2 - godzina:
+                <span class="right">
+                  <%= text_input f, :m2_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m2_time %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Posiłek 2 - opis:
+                  <%= textarea f, :m2_description, class: "diet-description " %>
+                  <%= error_tag f, :m2_description %>
+              </p>
+
+              <p class="edit">Posiłek 3 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m3_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m3_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 3 - godzina:
+                <span class="right">
+                  <%= text_input f, :m3_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m3_time %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Posiłek 3 - opis:
+                  <%= textarea f, :m3_description, class: "diet-description " %>
+                  <%= error_tag f, :m3_description %>
+              </p>
+
+              <p class="edit">Posiłek 4 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m4_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m4_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 4 - godzina:
+                <span class="right">
+                  <%= text_input f, :m4_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m4_time %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Posiłek 4 - opis:
+                  <%= textarea f, :m4_description, class: "diet-description " %>
+                  <%= error_tag f, :m4_description %>
+              </p>
+
+              <p class="edit">Posiłek 5 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m5_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m5_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 5 - godzina:
+                <span class="right">
+                  <%= text_input f, :m5_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m5_time %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Posiłek 5 - opis:
+                  <%= textarea f, :m5_description, class: "diet-description " %>
+                  <%= error_tag f, :m5_description %>
+              </p>
+
+              <p class="edit">Posiłek 6 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m6_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m6_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 6 - godzina:
+                <span class="right">
+                  <%= text_input f, :m6_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m6_time %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Posiłek 6 - opis:
+                  <%= textarea f, :m6_description, class: "diet-description " %>
+                  <%= error_tag f, :m6_description %>
+              </p>
+
+              <p class="edit">Posiłek 7 - nazwa:
+                <span class="right">
+                  <%= text_input f, :m7_name, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m7_name %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 7 - godzina:
+                <span class="right">
+                  <%= text_input f, :m7_time, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :m7_time %>
+                </span>
+              </p>
+              <p class="edit">Posiłek 7 - opis:
+                  <%= textarea f, :m7_description, class: "diet-description " %>
+                  <%= error_tag f, :m7_description %>
+              </p>
+
+            </div>
+            <div class="card-action grey lighten-4" style="text-align: right">
+              <%= submit "Zapisz", class: "btn green accent-4 black-text" %>
+              <%= link "Anuluj", to: diet_path(@conn, :index, @onuser), class: "btn red darken-1 white-text" %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>

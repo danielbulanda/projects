@@ -1,0 +1,39 @@
+<div class="edit_user">
+  <div class="col s12 m7">
+    <%= form_for @conn, user_path(@conn, :update_password, @conn.assigns.user.id), [as: :pswchange], fn f -> %>
+    <h2 class="header white-text">
+      Ustawienia konta
+    </h2>
+    <div class="card horizontal">
+      <div class="card-image grey lighten-3 center-align valign-wrapper" style="padding: 20px">
+        <span style="font-size: 2.1rem">Zmiana hasła</span>
+      </div>
+        <div class="card-stacked grey lighten-4">
+            <div class="card-content">
+              <p class="border-bottom-edit">Podaj stare hasło:
+                <span class="right">
+                  <%= password_input f, :old_password, class: "card_edit_input", placeholder: "podaj stare hasło" %>
+                  <%= error_tag f, :old_password %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Podaj nowe hasło:
+                <span class="right">
+                  <%= password_input f, :new_password, class: "card_edit_input", placeholder: "podaj nowe hasło" %>
+                  <%= error_tag f, :old_password %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Powtórz nowe hasło:
+                <span class="right">
+                  <%= password_input f, :new_password_repeat, class: "card_edit_input", placeholder: "powtórz nowe hasło" %>
+                  <%= error_tag f, :new_password_repeat %>
+                </span>
+              </p>
+            </div>
+            <div class="card-action grey lighten-4" style="text-align: right">
+              <%= submit "Zapisz", class: "btn green accent-4 black-text" %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="show_user">
+  <div class="col s12 m7">
+    <h2 class="header white-text">
+      Karta użytkownika
+    </h2>
+    <div class="card horizontal">
+      <div class="card-image grey lighten-3 center-align" style="padding: 20px">
+        <img src="<%= "/files/avatars/" <> @user_showed.email <> ".png" %>" class="shadow"
+         style="margin-left: auto; margin-right: auto;"/><br>
+        <p><span style="font-size: 2.5rem;"><b><%= @user_showed.first_name %> <%= @user_showed.last_name %> </b></span></p>
+        <p><span style="font-size: 2.1rem"><%= @user_showed.email %> </span></p>
+      </div>
+      <div class="card-stacked grey lighten-4">
+        <div class="card-content">
+          <p class="border-bottom">ID: <span class="right"><%= @user_showed.id %></span></p>
+          <p class="border-bottom">Telefon: <span class="right"><%= @user_showed.phone %></span></p>
+          <p class="border-bottom">Waga: <span class="right"><%= @user_showed.weight %></span></p>
+          <p class="border-bottom">Wzrost: <span class="right"><%= @user_showed.height %></span></p>
+          <p class="border-bottom">Wiek: <span class="right"><%= @user_showed.age %></span></p>
+          <p class="border-bottom">Wiek metaboliczny: <span class="right"><%= @user_showed.metabolic_age %></span></p>
+          <p class="border-bottom">Zawartość tłuszczu w organiźmie: <span class="right"><%= @user_showed.fat %></span></p>
+          <p class="border-bottom">Tłuszcz trzewny: <span class="right"><%= @user_showed.visceral_fat %></span></p>
+          <p class="border-bottom">Typ konta: <span class="right"><%= @user_showed.role %></span></p>
+          <p style="line-height: 44px;">Ostatnia aktualizacja: <span class="right"><%= @user_showed.role %></span></p>
+        </div>
+        <div class="card-action grey lighten-4" style="text-align: right">
+          <%= link "Diety", to: diet_path(@conn, :index, @user_showed), class: "btn green accent-4 black-text" %>
+          <%= link "Analiza zmian", to: change_path(@conn, :index, @user_showed), class: "btn green accent-4 black-text" %>
+          <%= link "Edytuj", to: user_path(@conn, :edit, @user_showed), class: "btn yellow accent-1 black-text"  %>
+          <%= link "Usuń", to: user_path(@conn, :delete, @user_showed), class: "btn red darken-1 white-text", method: :delete  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>

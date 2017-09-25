@@ -1,0 +1,60 @@
+<div class="edit_user">
+  <div class="col s12 m7">
+    <%= form_for @changeset, change_path(@conn, :create, @onuser), fn f -> %>
+    <h2 class="header white-text">
+      Dodaj zmiany parametrów dla użytkownika: <b> <%= @onuser.first_name %> <%= @onuser.last_name %> <b><%= @onuser.email %></b>
+    </h2>
+    <div class="card horizontal">
+
+        <div class="card-stacked grey lighten-4">
+          <div class="card-content">
+
+            <p class="border-bottom-edit">Data
+              <span class="right">
+                <%= text_input f, :date, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                <%= error_tag f, :date %>
+              </span>
+            </p>
+            <p class="border-bottom-edit">Waga
+              <span class="right">
+                <%= text_input f, :weight, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                <%= error_tag f, :weight %>
+              </span>
+            </p>
+            <p class="border-bottom-edit">Wiek metaboliczny
+              <span class="right">
+                <%= text_input f, :metabolic_age, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                <%= error_tag f, :metabolic_age %>
+              </span>
+            </p>
+            <p class="border-bottom-edit">Body Fat
+              <span class="right">
+                <%= text_input f, :fat, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                <%= error_tag f, :fat %>
+              </span>
+            </p>
+            <p class="border-bottom-edit">Tłuszcz trzewny
+              <span class="right">
+                <%= text_input f, :visceral_fat, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                <%= error_tag f, :visceral_fat %>
+              </span>
+            </p>
+            <p class="edit">Badania laboratoryjne
+                <%= textarea f, :labs, class: "diet-description " %>
+                <%= error_tag f, :labs %>
+            </p>
+            <p class="edit">Inne parametry
+                <%= textarea f, :others, class: "diet-description " %>
+                <%= error_tag f, :others %>
+            </p>
+
+          </div>
+          <div class="card-action grey lighten-4" style="text-align: right; width: 100%">
+            <%= submit "Dodaj", class: "btn green accent-4 black-text" %>
+            <%= link "Anuluj", to: change_path(@conn, :index, @onuser), class: "btn red darken-1 white-text" %>
+          </div>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>

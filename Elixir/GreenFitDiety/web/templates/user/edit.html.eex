@@ -1,0 +1,74 @@
+<div class="edit_user">
+  <div class="col s12 m7">
+    <%= form_for @changeset, user_path(@conn, :update, @user_edited), fn f -> %>
+    <h2 class="header white-text">
+      Edycja danych użytkownika
+    </h2>
+    <div class="card horizontal">
+      <div class="card-image grey lighten-3 center-align" style="padding: 20px">
+        <img src="<%= "/files/avatars/" <> @user_edited.email <> ".png" %>" class="shadow"
+         style="margin-left: auto; margin-right: auto;"/><br>
+        <span style="font-size: 2.5rem;"><b><%= @user_edited.first_name %> <%= @user_edited.last_name %> </b></span><br>
+        <span style="font-size: 2.1rem"><%= @user_edited.email %> </span>
+      </div>
+        <div class="card-stacked grey lighten-4">
+
+            <div class="card-content">
+
+              <p class="border-bottom-edit">ID:
+                <span class="right"><%= @user_edited.id %></span>
+              </p>
+              <%= if @conn.assigns.user.role == "administrator" do %>
+                <p class="border-bottom-edit">Hasło:
+                  <span class="right">
+                    <%= text_input f, :password, value: "", class: "card_edit_input", placeholder: "Wpisz nowe hasło (minimum 4 znaki)" %>
+                    <%= error_tag f, :password %>
+                  </span>
+                </p>
+              <% end %>
+              <p class="border-bottom-edit">Telefon:
+                <span class="right">
+                  <%= text_input f, :phone, value: @user_edited.phone, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :phone %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Wzrost:
+                <span class="right">
+                  <%= text_input f, :height, value: @user_edited.height, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :height %>
+                </span>
+              </p>
+              <p class="border-bottom-edit">Wiek:
+                <span class="right">
+                  <%= text_input f, :age, value: @user_edited.age, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                  <%= error_tag f, :age %>
+                </span>
+              </p>
+              <p class="border-bottom">Waga: <span class="right"><%= @user_edited.weight %></span></p>
+              <p class="border-bottom">Wiek metaboliczny: <span class="right"><%= @user_edited.metabolic_age %></span></p>
+              <p class="border-bottom">Zawartość tłuszczu w organiźmie: <span class="right"><%= @user_edited.fat %></span></p>
+              <p class="border-bottom">Tłuszcz trzewny: <span class="right"><%= @user_edited.visceral_fat %></span></p>
+              <p class="border-bottom-edit">Typ konta:
+                <span class="right">
+                  <%= if @user.role == "administrator" do %>
+                    <%= text_input f, :role, value:  @user_edited.role, class: "card_edit_input", placeholder: "to pole jest puste" %>
+                    <%= error_tag f, :role %>
+                  <% else %>
+                    <%= @user_edited.role %>
+                  <% end %>
+                </span>
+              </p>
+              <p style="line-height: 44px;">Ostatnia aktualizacja: <span class="right"><%= @user_edited.role %></span></p><br>
+
+            </div>
+            <div class="card-action grey lighten-4" style="text-align: right">
+              <%= submit "Zapisz", to: user_path(@conn, :update, @user_edited.id), class: "btn green accent-4 black-text" %>
+              <%= link "Anuluj", to: user_path(@conn, :show, @user_edited.id), class: "btn red darken-1 white-text" %>
+            </div>
+
+        </div>
+
+    </div>
+    <% end %>
+  </div>
+</div><br>

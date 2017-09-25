@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.leoshihpsu.stopwatch.StopwatchActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00:00"
+        android:id="@+id/textFiled"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="92sp" />
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/startText"
+        android:id="@+id/startButton"
+        android:layout_below="@+id/textFiled"
+        android:layout_marginTop="15dp"
+        android:onClick="onClickStart"/>
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stoptText"
+        android:id="@+id/stopButton"
+        android:layout_below="@+id/startButton"
+        android:layout_marginTop="15dp"
+        android:onClick="onClickStop"/>
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resetText"
+        android:id="@+id/resetButton"
+        android:layout_below="@+id/stopButton"
+        android:layout_marginTop="15dp"
+        android:onClick="onClickReset"/>
+
+</RelativeLayout>

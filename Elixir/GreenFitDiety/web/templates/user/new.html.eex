@@ -1,0 +1,16 @@
+<div class="create_user">
+  <h2 class="header white-text">
+    Tworzenie nowego konta - podaj adres email
+  </h2>
+
+  <div class="center-align">
+    <%= form_for @changeset, user_path(@conn, :create), fn f -> %>
+    <%= text_input f, :email, placeholder: "email", class: "my-form input-bg", id: "email",
+      style: "margin-top: 10px" %>
+      <%= error_tag f, :email %>
+    <br>
+    <button type="submit" class="btn btn-default input-bg">Wyślij</button>
+    <% end %>
+  </div>
+
+</div>

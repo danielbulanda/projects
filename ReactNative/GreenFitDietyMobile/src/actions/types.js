@@ -1,0 +1,9 @@
+export const EMAIL_CHANGED = 'emailch_changed';
+export const PASSWORD_CHANGED = 'password_changed';
+export const LOGIN_USER_SUCCESS = 'loing_user_success';
+export const LOGIN_USER_FAIL = 'loing_user_fail';
+export const LOADING_USER = 'loading_user';
+export const SECTION_CHANGED = 'section_changed';
+export const DAY_CHANGED = 'day_changed';
+export const CHANGE_CHANGED = 'change_changed';
+export const LOGOUT = 'logout';

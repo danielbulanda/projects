@@ -1,0 +1,106 @@
+<div class="show_user">
+  <div class="col s12 m7">
+    <h2 class="header white-text">
+      Karta diety użytkownika: <b><%= @onuser.first_name %> <%= @onuser.last_name %> <%= @onuser.email %></b>
+    </h2>
+    <%= for iday <- @days do %>
+      <%
+        {i, day} = iday
+        diet = Enum.fetch!(@diets, i)
+      %>
+      <div class="card horizontal">
+        <div class="card-image grey lighten-3 center-align valign-wrapper" style="padding: 20px; min-width: 200px;">
+          <span style="font-size: 2.1rem; margin-left: auto; margin-right: auto;"><b><%= day %></b></span>
+        </div>
+        <div class="card-stacked grey lighten-4">
+          <div class="card-content">
+
+            <%= if diet.m1_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m1_name %></b></span>
+                <span class="right">godzina: <%= diet.m1_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m1_description %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if diet.m2_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m2_name %></b></span>
+                <span class="right">godzina: <%= diet.m2_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m2_description %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if diet.m3_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m3_name %></b></span>
+                <span class="right">godzina: <%= diet.m3_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m3_description %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if diet.m4_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m4_name %></b></span>
+                <span class="right">godzina: <%= diet.m4_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m4_description %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if diet.m5_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m5_name %></b></span>
+                <span class="right">godzina: <%= diet.m5_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m5_description %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if diet.m6_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m6_name %></b></span>
+                <span class="right">godzina: <%= diet.m6_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m6_description %>
+                </textarea>
+              </p>
+            <% end %>
+            <%= if diet.m7_name != nil do %>
+              <p class="show-element">
+                <span><b><%= diet.m7_name %></b></span>
+                <span class="right">godzina: <%= diet.m7_time %></span>
+              </p>
+              <p>
+                <textarea class="diet-description-show" readonly>
+                  <%= diet.m7_description %>
+                </textarea>
+              </p>
+            <% end %>
+          </div>
+          <%= if @conn.assigns.user.role == "administrator" do %>
+            <div class="card-action grey lighten-4" style="text-align: right">
+              <%= link "Edytuj", to: diet_path(@conn, :edit, @onuser, diet), class: "btn yellow accent-1 black-text" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div><br>

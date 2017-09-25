@@ -1,0 +1,21 @@
+
+  <ul class="collection">
+    <h2 class="header white-text" style="width: 97%; margin-left: auto; margin-right: auto; text-align: left">
+      Lista użytkowników
+      <span style="font-size: 2.0rem"><%= if @user.role == "klient" do %>(klienci mają dostęp tylko do własnych kont)<% end %></span>
+    </h2>
+    <%= for user <- @users do %>
+       <%= if @user.role == "administrator" || @user.id == user[:id] do %>
+        <li class="collection-item">
+          <%= link to: user_path(@conn, :show, user[:id]), class: "btn grey greyh lighten-3 collection-title", style: "" do %>
+            <%= "#{user[:id]}: #{user[:first_name]} #{user[:last_name]}" %> <b> <%= "#{user[:email]}" %> </b>
+            <%= link "Diety", to: diet_path(@conn, :index, user[:id]), class: "btn green accent-1 black-text waves-effect" %>
+            <%= link "Analiza zmian", to: change_path(@conn, :index, user[:id]), class: "btn green accent-1 black-text" %>
+            <%= link "Edytuj", to: user_path(@conn, :edit,  user[:id]), class: "btn yellow accent-1 black-text"  %>
+            <%= link "Usuń", to: user_path(@conn, :delete, user[:id]), class: "btn  red darken-1 white-text", method: :delete  %>
+            <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <br>

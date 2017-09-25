@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Stuio Diety GreenFit - Panel Administratora">
+    <meta name="author" content="kontakt@danielbulanda.pl">
+
+    <title>Stuio Diety GreenFit - Panel Administratora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Exo" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/buttons.css") %>">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav class="nav">
+          <div class="container-header">
+              <div class="left header-logo link-bg">
+                <a href="http://greenfitdiety.pl/" target="_blank"><img src="/images/logo.png" class="fill" /></a>
+              </div>
+              <div class="header-main">
+                  <%= link "..:: Studio Diety GreenFit - Panel Administracyjny ::..",
+                    to: auth_path(@conn, :start), class: "header-title link-bg" %><br>
+                <div class="header-nav">
+                  <% path_settings = if @conn.assigns.user do user_path(@conn, :settings, @conn.assigns.user.id) else auth_path(@conn, :notallowed) end %>
+                  <% path_new = if @conn.assigns.user do user_path(@conn, :new) else auth_path(@conn, :notallowed) end %>
+                  <% path_index = if @conn.assigns.user do user_path(@conn, :index) else auth_path(@conn, :notallowed) end %>
+                  <%= link "Nowy klient", to: path_new, class: "nav-link link-bg",
+                   style: "font-size: 2.0rem; font-weight: bold" %>
+                  <%= link "Lista użytkowników", to: path_index, class: "nav-link link-bg",
+                   style: "font-size: 2.0rem; font-weight: bold" %>
+                  <%= link "Ustawienia", to: path_settings, class: "nav-link link-bg border-both",
+                  style: "font-size: 2.0rem; font-weight: bold" %>
+                </div>
+              </div>
+              <div class="header-log link-bg right">
+                <%= if @conn.assigns.user do %>
+                  <div class="center-vertical">
+                    <img src="<%= "/files/avatars/" <> @conn.assigns.user.email <> ".png" %>" class="identicon shadow" />
+                    <p><%= @conn.assigns.user.email %></p>
+                    <%= link "- Wyloguj się -", to: auth_path(@conn, :signout), style: "color:black; font-size: 1.3rem; font-weight: bold;" %>
+                  </div>
+                <% else %>
+                  <div class="center-vertical">
+                    <img src="images/login.png" class="identicon" />
+                    <%= link "- Zaloguj się -", to: auth_path(@conn, :login_page), style: "color:black" %>
+                  </div>
+                <% end %>
+              </div
+          </div>
+        </nav>
+      </header>
+      <main role="main" class="container-main">
+        <div class="container-main">
+          <script src="<%= static_path(@conn, "/vendor/textarea.js") %>"></script>
+          <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+          <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+          <%= render @view_module, @view_template, assigns %>
+        </div>
+      </main>
+      <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+      <script>require("web/static/js/app").App.run()</script>
+      <footer>
+        <div class="footer">
+          Created by Daniel Bulanda - kontakt@danielbulanda.pl
+        </div>
+      </footer>
+    </div>
+
+  </body>
+</html>

@@ -1,2 +1,0 @@
-{  "cost": 150.0, "vat": 34.51, "type": "income", "date": "2015-04-02", "description": "cost" }
-{  "cost": 350.0, "vat": 80.51, "type": "income", "date": "2017-04-02", "description": "cost" }
